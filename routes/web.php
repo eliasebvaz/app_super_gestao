@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 // Rota principal
 Route::get('/', [\App\Http\Controllers\PrincipalController::class,'principal'])->name('site.index');
 
-Route::get('/sobrenos', [\App\Http\Controllers\PrincipalController::class,'principal'])->name('site.sobrenos');
+Route::get('/sobrenos', [\App\Http\Controllers\SobreNosController::class,'principal'])->name('site.sobrenos');
 
-Route::get('/contato', [\App\Http\Controllers\PrincipalController::class,'principal'])->name('site.contato');
+Route::get('/contato', [\App\Http\Controllers\ContatoController::class,'principal'])->name('site.contato');
