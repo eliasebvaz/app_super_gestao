@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class ContatoController extends Controller
 {
-    public function principal() {
+    public function principal(Request $request) {
 
-    var_dump($_POST);
+        $request->all();
 
         return view ('site.contato', ['titulo' => 'Contato']);
     }
