@@ -16,19 +16,19 @@ return new class extends Migration
         // Criando a Tabela Filiais
         Schema::create('filiais', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('filial', 30);
+            $table->timestamps();
         });
 
         // Criando a Tabela produto_filiais
         Schema::create('produto_filiais', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->unsignedBigInteger('filial_id');
             $table->unsignedBigInteger('produto_id');
             $table->decimal('preco_venda', 8, 2);
             $table->integer('estoque_minimo');
             $table->integer('estoque_maximo');
+            $table->timestamps();
 
             // Foreign Key
             $table->foreign('filial_id')->references('id')->on('filiais');
