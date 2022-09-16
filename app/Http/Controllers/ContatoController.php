@@ -4,48 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SiteContato;
+use App\Models\MotivoContato;
 
 class ContatoController extends Controller
 {
     public function contato(Request $request) {
 
-        /* 1° Método, salvar preenchendo manualmente os campos
-        $contato = new SiteContato();
-        $contato->nome = $request->input('nome');
-        $contato->telefone = $request->input('telefone');
-        $contato->email = $request->input('email');
-        $contato->motivo_contato = $request->input('motivo_contato');
-        $contato->mensagem = $request->input('mensagem');
-
-        // Salvando somente se o método passado estiver com POST
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $contato->save();
-        }
-        */
+        // Enviando motivo_contatos
+        $motivo_contatos = \App\Models\MotivoContato::all();
         
-        /* 2° Método, salvar preenchendo com fill
-        $contato = new SiteContato();
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $contato->fill($request->all());
-            $contato->save();
-        }
-        */
-
-        /* 3° Método, salvar preenchendo com create
-        $contato = new SiteContato();
-        if($_SERVER["REQUEST_METHOD"] == "POST")
-        {
-            $contato->create($request->all());
-        }
-        */
-
-        /* 4° Método, salvar diretamente com o Model
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            SiteContato::create($request->all());
-        }
-        */
-        
-        return view ('site.contato', ['titulo' => 'Contato']);
+        return view ('site.contato', ['titulo' => 'Contato'],  ['motivo_contatos' => $motivo_contatos]);
     }
 
     // Método para Salvar
@@ -64,6 +32,9 @@ class ContatoController extends Controller
             SiteContato::create($request->all());
         }
         
-        return view ('site.contato', ['titulo' => 'Contato']);
+        // Enviando motivo_contatos
+        $motivo_contatos = \App\Models\MotivoContato::all();
+        
+        return view ('site.contato', ['titulo' => 'Contato'],  ['motivo_contatos' => $motivo_contatos]);
     }
 }
