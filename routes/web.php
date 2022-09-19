@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\LogAcessoMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +15,7 @@ use App\Http\Middleware\LogAcessoMiddleware;
 
 // Rota principal
 Route::get('/', [\App\Http\Controllers\PrincipalController::class,'principal'])
-    ->name('site.index')
-    ->middleware(LogAcessoMiddleware::class);
+    ->name('site.index');
 
 Route::get('/sobrenos', [\App\Http\Controllers\SobreNosController::class,'principal'])->name('site.sobrenos');
 Route::get('/contato', [\App\Http\Controllers\ContatoController::class,'contato'])->name('site.contato');
