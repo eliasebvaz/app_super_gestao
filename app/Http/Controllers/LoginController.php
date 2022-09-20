@@ -7,8 +7,19 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
-    public function index(){
-        return view('site.login', ['titulo' => 'Login']);
+    public function index(Request $request){
+
+        $erro = '';
+
+        if($request->get('erro') == 1){
+            $erro = 'Usuário ou senha inválidos';
+        }
+
+        if($request->get('erro') == 2){
+            $erro = 'Necessário realizar login para ter acesso a pagina';
+        }
+
+        return view('site.login', ['titulo' => 'Login', 'erro' => $erro]);
     }
 
     public function autenticar(Request $request){
@@ -42,9 +53,21 @@ class LoginController extends Controller
                         ->first();
 
         if(isset($usuario->name)){
-            echo 'Usuário validado';
+            session_start();
+            $_SESSION['nome'] = $usuario->name;
+            $_SESSION['email'] = $usuario->email;
+
+            return redirect()->route('app.home');
+
         } else {
-            echo 'Usuário não existe'; 
+
+            // Redirecionando para a rota no método get
+            return redirect()->route('site.login', ['erro' => '1']);
         }
+    }
+
+    public function sair(){
+        session_destroy();
+        return redirect()->route('site.index');
     }
 }
