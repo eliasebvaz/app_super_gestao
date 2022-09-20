@@ -14,10 +14,10 @@ class AutenticacaoMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $metodo_autenticacao)
+    public function handle(Request $request, Closure $next, $parametro1, $parametro2, $parametron)
     {
 
-        echo $metodo_autenticacao;
+        echo parametro1;
         if(false){
             return $next($request);
         } else {

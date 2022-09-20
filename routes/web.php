@@ -21,6 +21,9 @@ Route::get('/sobrenos', [\App\Http\Controllers\SobreNosController::class,'princi
 Route::get('/contato', [\App\Http\Controllers\ContatoController::class,'contato'])->name('site.contato');
 Route::post('/contato', [\App\Http\Controllers\ContatoController::class,'salvar'])->name('site.contato');
 
-Route::middleware('log.acesso', 'autenticacao:padrao')->prefix('app')->group(function(){
+Route::middleware('log.acesso', 'autenticacao:parametro1, parametro2, parametron')->prefix('app')->group(function(){
     Route::get('/fornecedores', [\App\Http\Controllers\FornecedorController::class,'index'])->name('app.fornecedores');
 });
+
+Route::get('/login', [\App\Http\Controllers\LoginController::class,'index'])->name('site.login');
+Route::post('/login', [\App\Http\Controllers\LoginController::class,'autenticar'])->name('site.login');
