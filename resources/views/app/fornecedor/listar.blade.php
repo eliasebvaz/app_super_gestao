@@ -20,37 +20,32 @@
             {{ $msg ?? ''}}
             <div style="width: 90%; margin-left: auto; margin-right: auto;">
                 
-                    <table border="1" width="100%">
-                        <thead>
+                <table border="1" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Site</th>
+                            <th>Uf</th>
+                            <th>E-mail</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ( $fornecedores as $fornecedor)
                             <tr>
-                                <th>Nome</th>
-                                <th>Site</th>
-                                <th>Uf</th>
-                                <th>E-mail</th>
-                                <th></th>
-                                <th></th>
+                                <td>{{ $fornecedor->nome }}</td>
+                                <td>{{ $fornecedor->site }}</td>
+                                <td>{{ $fornecedor->uf }}</td>
+                                <td>{{ $fornecedor->email }}</td>
+                                <td><a href="{{ route('app.fornecedor.excluir', $fornecedor->id) }}">Excluir</a></td>
+                                <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">Editar</a></td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ( $fornecedores as $fornecedor)
-                                <tr>
-                                    <td>{{ $fornecedor->nome }}</td>
-                                    <td>{{ $fornecedor->site }}</td>
-                                    <td>{{ $fornecedor->uf }}</td>
-                                    <td>{{ $fornecedor->email }}</td>
-                                    <td>Excluir</td>
-                                    <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">Editar</a></td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                
+                        @endforeach
+                    </tbody>
+                </table>                
             </div>
-            
         </div>
-
-
-
     </div>
 
 @endsection

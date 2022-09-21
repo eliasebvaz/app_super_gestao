@@ -72,8 +72,11 @@ class FornecedorController extends Controller
 
             // $request->validate($regras, $feedback);
 
-            return redirect()->route('app.fornecedor.adicionar', ['id' => $request->input('id'), 'msg' => $msg]);
+            return redirect()->route('app.fornecedor.editar', ['id' => $request->input('id'), 'msg' => $msg]);
         }
+
+        // Caso caia pelo método get
+        return view ('app.fornecedor.adicionar', ['msg' => $msg]);
     }
 
     // Função de edição de fornecedor
@@ -83,6 +86,16 @@ class FornecedorController extends Controller
         $fornecedor = Fornecedor::find($id);
 
         return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg' => $msg]);
+
+    }
+
+    // Função de excluir de fornecedor
+    public function excluir($id) { 
+
+        // Excluir registro no banco
+        Fornecedor::find($id)->delete();
+
+        return redirect()->route('app.fornecedor');
 
     }
 }
