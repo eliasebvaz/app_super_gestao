@@ -17,6 +17,7 @@
         </div>
 
         <div class="informacao-pagina">
+            {{ $msg ?? ''}}
             <div style="width: 90%; margin-left: auto; margin-right: auto;">
                 
                     <table border="1" width="100%">
@@ -38,7 +39,7 @@
                                     <td>{{ $fornecedor->uf }}</td>
                                     <td>{{ $fornecedor->email }}</td>
                                     <td>Excluir</td>
-                                    <td>Editar</td>
+                                    <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">Editar</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

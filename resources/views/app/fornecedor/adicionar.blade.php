@@ -18,19 +18,20 @@
 
         <div class="informacao-pagina">
 
-            {{ $msg }}
+            {{ $msg ?? ''}}
 
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
             
                 <form method="post" action="{{ route('app.fornecedor.adicionar') }}">
                     @csrf
-                    <input type="text" value="{{ old ('nome')}}" name="nome" placeholder="Nome" class="borda-preta">
+                    <input type="hidden" value="{{ $fornecedor->id ?? ''}}" name="id">
+                    <input type="text" value="{{ $fornecedor->nome ?? old ('nome')}}" name="nome" placeholder="Nome" class="borda-preta">
                     @error('nome') {{$errors->first('nome') }} @enderror
-                    <input type="text" value="{{ old ('site')}}" name="site" placeholder="Site" class="borda-preta">
+                    <input type="text" value="{{ $fornecedor->site ?? old ('site')}}" name="site" placeholder="Site" class="borda-preta">
                     @error('site') {{$errors->first('site') }} @enderror
-                    <input type="text" value="{{ old ('uf')}}" name="uf" placeholder="UF" class="borda-preta">
+                    <input type="text" value="{{ $fornecedor->uf ?? old ('uf')}}" name="uf" placeholder="UF" class="borda-preta">
                     @error('uf') {{$errors->first('uf') }} @enderror
-                    <input type="text" value="{{ old ('email')}}" name="email" placeholder="E-mail" class="borda-preta">
+                    <input type="text" value="{{ $fornecedor->email ?? old ('email')}}" name="email" placeholder="E-mail" class="borda-preta">
                     @error('email') {{$errors->first('email') }} @enderror
                     <button type="submit" class="borda-preta">Cadastrar</button>
                 </form>
