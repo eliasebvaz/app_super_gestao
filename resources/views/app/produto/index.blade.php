@@ -40,7 +40,25 @@
                                 <td>{{ $produto->peso }}</td>
                                 <td>{{ $produto->unidade_id }}</td>
                                 <td><a href="{{ route ('produto.show', ['produto' => $produto->id]) }}">Visualizar</a></td>
-                                <td><a href="">Excluir</a></td>
+                                <td>
+                                    <!-- 
+                                    /*
+                                        |--------------------------------------------------------------------------
+                                        | Formúlario para o delete do produto 
+                                        |--------------------------------------------------------------------------
+                                        |
+                                        | Aqui fazemos um formulário que irá passar como parâmetro
+                                        | o id do produto e como o link, iremos passar o id do form
+                                        | que construirmos concatenando o id com form e passamos por javascript com o onclick
+                                        |
+                                        */
+                                    -->
+                                    <form id="form_{{$produto->id}}" method="post" action="{{ route ('produto.destroy', ['produto' => $produto->id]) }}">
+                                        @csrf
+                                        @method('DELETE') 
+                                        <a href="#" onclick="document.getElementById('form_{{$produto->id}}').submit()">Excluir</a>
+                                    </form>
+                                </td>
                                 <td><a href="{{ route ('produto.edit', ['produto' => $produto->id]) }}">Editar</a></td>
                             </tr>
                         @endforeach
@@ -49,10 +67,7 @@
 
                 <!-- Páginação de Produtos -->
                 {{ $produtos->appends($request)->links() }}
-                {{ $produtos->count() }}
-                {{ $produtos->firstItem() }}
-                {{ $produtos->lastItem() }}
-
+                
                 <br>
                 Exibindo {{ $produtos->count() }} produtos de {{ $produtos->total() }} de {{ $produtos->firstItem() }} a {{ $produtos->lastItem()}}
 

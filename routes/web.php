@@ -29,6 +29,9 @@ Route::middleware('log.acesso', 'autenticacao:padrao, visitante, p3,p4')->prefix
     // Produto
     Route::resource('produto', 'App\Http\Controllers\ProdutoController');
 
+    // Produto Detalhe
+    Route::resource('produto-detalhe', 'App\Http\Controllers\ProdutoDetalheController');
+
     // Fornecedor
     Route::get('/fornecedor', [\App\Http\Controllers\FornecedorController::class,'index'])->name('app.fornecedor');
     Route::post('/fornecedor/listar', [\App\Http\Controllers\FornecedorController::class,'listar'])->name('app.fornecedor.listar');
