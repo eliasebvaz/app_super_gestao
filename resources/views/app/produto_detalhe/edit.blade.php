@@ -15,7 +15,7 @@
         </div>
 
         <div class="informacao-pagina">
-
+            
             <h4>Produto</h4>
             <div>Nome: {{ $produtoDetalhe->item->nome }}</div>
             <br>
