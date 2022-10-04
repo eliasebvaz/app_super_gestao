@@ -23,7 +23,11 @@ class Item extends Model
         | que forem relacionadas com base de relacionamento 1x1
         |
     */
-    public function ProdutoDetalhe(){
+    public function itemDetalhe(){
         return $this->hasOne('App\Models\ItemDetalhe', 'produto_id', 'id');
+    }
+
+    public function fornecedor(){
+        return $this->belongsTo('App\Models\Fornecedor');
     }
 }

@@ -13,4 +13,9 @@ class Fornecedor extends Model
     protected $table = 'fornecedores';
     protected $fillable = ['nome', 'site', 'uf', 'email'];
     use HasFactory;
+
+    // Relação de 1xN entre fornecedor com produtos
+    public function produtos (){
+        return $this->hasMany('App\Models\Item', 'fornecedor_id', 'id');
+    }
 }
