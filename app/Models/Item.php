@@ -11,7 +11,7 @@ class Item extends Model
 
     protected $table = 'produtos';
 
-    protected $fillable = ['nome', 'descricao', 'peso', 'unidade_id'];
+    protected $fillable = ['nome', 'descricao', 'peso', 'unidade_id', 'fornecedor_id'];
 
     /*
         |--------------------------------------------------------------------------
